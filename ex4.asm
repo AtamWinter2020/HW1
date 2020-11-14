@@ -2,12 +2,13 @@
 
 .section .text
 _start:
-    movq $root, %rax
+    movq root, %rax
     cmp $0, %rax
     je empty_tree
     movq $new_node, %rbx
 traverse:
-    cmpq %rax, %rbx
+    movq (%rbx), %rdx
+    cmpq (%rax), %rdx
     je end #if root ==  new_node
     movq %rax, %rcx #backup
     jl left
