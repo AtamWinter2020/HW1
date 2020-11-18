@@ -1,11 +1,11 @@
 language: generic
 
 script:
-  - ./run_test.sh ex1.asm tests/test_1_1
-  - ./run_test.sh ex2.asm tests/test_2_1
-  - ./run_test.sh ex3.asm tests/test_3_1
-  - ./run_test.sh ex4.asm tests/test_4_1
-  - ./run_test.sh ex5.asm tests/test_5_1
+  - ./run_test.sh ex1.asm tests/test_1_*
+  - ./run_test.sh ex2.asm tests/test_2_*
+  - ./run_test.sh ex3.asm tests/test_3_*
+  - ./run_test.sh ex4.asm tests/test_4_*
+  - ./run_test.sh ex5.asm tests/test_5_*
   - mkdir -p artifacts
   - zip ./artifacts/sub.zip ex*.asm
   - ./check_submission.sh ./artifacts/sub.zip
