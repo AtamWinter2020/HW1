@@ -9,6 +9,8 @@ _start:
   movq %rbx, %rax # curr_node = next_node
   jmp loop
 loop_update_prev: # Only advance prev if in order
+  cmp $0, %rbx
+  je end
   leaq 8(%rax), %r12 # prev_next = curr_node->next
 loop: # Loop through all the items in the list
   # Update curr_node and next_node
