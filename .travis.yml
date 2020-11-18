@@ -1,16 +1,5 @@
 language: generic
 
-
-addons:
-  artifacts: true
-
-deploy:
-  provider: releases
-  api_key: "9f65bb8de93ddaa58119d6c350ceb03149e735b3"
-  file: "sub.zip"
-  skip_cleanup: true
-  draft: true
-
 script:
   - ./run_test.sh ex1.asm tests/test_1_1
   - ./run_test.sh ex2.asm tests/test_2_1
@@ -18,3 +7,9 @@ script:
   - ./run_test.sh ex4.asm tests/test_4_1
   - zip sub.zip ex*.asm
   - ./check_submission.sh sub.zip
+
+deploy:
+  provider: gcs
+  key_file: storage_key.json
+  bucket: https://console.cloud.google.com/storage/browser/gurt-github-artifacts
+  edge: true # opt in to dpl v2
