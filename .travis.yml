@@ -6,13 +6,14 @@ script:
   - ./run_test.sh ex3.asm tests/test_3_1
   - ./run_test.sh ex4.asm tests/test_4_1
   - zip sub.zip ex*.asm
-  - ./check_submission.sh sub.zip
+  - mkdir artifacts
+  - ./check_submission.sh ./artifacts/sub.zip
 
 deploy:
   provider: gcs
   key_file: storage_key.json
   bucket: gurt-github-artifacts
   edge: true # opt in to dpl v2
-  file: sub.zip
+  local_dir: ./artifacts
   on:
     all_branches: true
