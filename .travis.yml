@@ -1,10 +1,9 @@
 language: generic
 
 script:
-    - make_submission.sh
-    - run_test.sh ex1.asm tests/test_1_1
-    - run_test.sh ex2.asm tests/test_2_1
-    - run_test.sh ex3.asm tests/test_3_1
-    - run_test.sh ex4.asm tests/test_4_1
+    - ./run_test.sh ex1.asm tests/test_1_1
+    - ./run_test.sh ex2.asm tests/test_2_1
+    - ./run_test.sh ex3.asm tests/test_3_1
+    - ./run_test.sh ex4.asm tests/test_4_1
     - zip sub.zip ex*.asm
-    - check_submission.sh sub.zip
+    - ./check_submission.sh sub.zip
