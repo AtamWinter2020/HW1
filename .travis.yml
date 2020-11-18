@@ -11,7 +11,7 @@ script:
 deploy:
   provider: gcs
   key_file: storage_key.json
-  bucket: gs://gurt-github-artifacts
+  bucket: gurt-github-artifacts
   edge: true # opt in to dpl v2
   on:
     all_branches: true
