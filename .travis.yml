@@ -1,0 +1,29 @@
+language: generic
+
+script:
+  - ./run_test.sh ex1.asm tests/test_1_1
+  - ./run_test.sh ex2.asm tests/test_2_1
+  - ./run_test.sh ex3.asm tests/test_3_1
+  - ./run_test.sh ex4.asm tests/test_4_1
+  - mkdir -p artifacts
+  - zip ./artifacts/sub.zip ex*.asm
+  - ./check_submission.sh ./artifacts/sub.zip
+
+deploy:
+  provider: gcs
+  key_file: storage_key.json
+  bucket: gurt-github-artifacts
+  edge: true # opt in to dpl v2
+  local_dir: ./artifacts
+  on:
+    all_branches: true
+
+#deploy:
+#  provider: releases
+#  token: "2d4b9e296594ff7e67ad2f8d9abf635df6f5697d"
+#  file: "./artifacts/sub.zip"
+#  edge: true # opt in to dpl v2
+#  cleanup: false
+#  on:
+#    all_branches: true
+#    tags: true
