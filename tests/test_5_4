@@ -4,10 +4,6 @@
   jne bad_exit
   
   movq 8(%rbx), %rbx
-  cmpl $1, (%rbx)
-  jne bad_exit
-
-  movq 8(%rbx), %rbx
   cmpl $3, (%rbx)
   jne bad_exit
 
@@ -15,8 +11,12 @@
   cmpl $4, (%rbx)
   jne bad_exit
 
+  movq 8(%rbx), %rbx
+  cmpl $-1, (%rbx)
+  jne bad_exit
+
   movq $60, %rax
-  movq $-1, %rdi
+  movq $0, %rdi
   syscall
 
 bad_exit:

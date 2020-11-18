@@ -1,5 +1,5 @@
 
-  movq 8(%rbx), %rbx
+  movq (head), %rbx
   cmpl $7, (%rbx)
   jne bad_exit
 
@@ -7,7 +7,7 @@
   cmpl $8, (%rbx)
   jne bad_exit
 
-  movq (head), %rbx
+  movq 8(%rbx), %rbx
   cmpl $-4, (%rbx)
   jne bad_exit
   
