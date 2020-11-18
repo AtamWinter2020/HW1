@@ -16,4 +16,4 @@ loop:
   jmp loop
   
 end:
-  movq %rcx, (countBits)
+  movq %rcx, (countBit)
