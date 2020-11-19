@@ -1,0 +1,45 @@
+
+  movq (head), %rbx
+  cmpl $7, (%rbx)
+  jne bad_exit
+
+  movq 8(%rbx), %rbx
+  cmpl $8, (%rbx)
+  jne bad_exit
+
+  movq 8(%rbx), %rbx
+  cmpl $-4, (%rbx)
+  jne bad_exit
+  
+  movq 8(%rbx), %rbx
+  cmpl $-1, (%rbx)
+  jne bad_exit
+
+  movq $60, %rax
+  movq $0, %rdi
+  syscall
+
+bad_exit:
+  movq $60, %rax
+  movq $1, %rdi
+  syscall
+
+.section .data
+head:
+        .quad   A
+A:
+        .int    -1
+        .int    22
+        .quad   B
+B:
+        .int    8
+        .int    6
+        .quad   C
+C:
+        .int    7
+        .int    15
+        .quad   D
+D:
+        .int    -4
+        .int    3
+        .quad   0
